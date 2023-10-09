@@ -33,6 +33,10 @@ app.use(credentials)
 app.use(cors(corsOptions))
 // app.use(cors({origin: '*'}));
 
+app.get('/',(req,res)=>{
+    res.send("server working successfully")
+})
+
 app.use('/register', require('./controllers/registerController'))
 app.use('/login', require('./controllers/loginController'))
 

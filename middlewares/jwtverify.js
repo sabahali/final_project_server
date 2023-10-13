@@ -8,7 +8,7 @@ const jwtVerify = async (req, res, next) => {
 
 
         const token = authHeader.split(' ')[1];
-        console.log(token)
+        // console.log(token)
         try {
             const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
             // res.sendStatus(200)

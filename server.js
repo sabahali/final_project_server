@@ -14,7 +14,8 @@ const {addCartsToDb,retriveCarts,deleteCartFromDb} = require('./frontEndControll
 const {generatepdfInvoice} = require('./utils/pdfcreate')
 const {checkoutSession : stripeSession,stripeConfirm} = require('./frontEndControllers/stripeController')
 const{captureController,orderController,paymentConfirmController} = require('./frontEndControllers/paypalController')
-
+const {paytmPaymentCreation} = require('./frontEndControllers/paytmController')
+const {googleLogin} = require('./controllers/googleLoginController')
 connect(() => {
     app.listen(8000, () => {
         console.log("server connected to port 8000")
@@ -42,6 +43,8 @@ app.use('/login', require('./controllers/loginController'))
 
 app.use('/refresh', require('./controllers/refreshController'))
 app.use('/logout', require('./api/logout'))
+app.use('/googlelogin',require('./controllers/googleController'))
+// app.post('/googlelogin',googleLogin)
 
 // app.post('/razorpayorder',(req,res)=>{
 //     console.log('razorpay')
@@ -63,6 +66,11 @@ app.post('/paypalconfirm',paymentConfirmController,generatepdfInvoice,addtoOrder
     res.redirect(`${process.env.FRONTE_END_BASE_URL}/home/paymentsuccess`)
 })
 
+
+//paytm
+app.post('/paytmCheckout',paymentConfirmController)
+
+//testPDF
 app.post('/generatepdf',generatepdfInvoice)
 app.post('/getinvoice/:id',getInvoice)
 

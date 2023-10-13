@@ -39,4 +39,8 @@ router.get('/', async (req, res) => {
 
 })
 
+router.get('/initialRefresh',(req,res)=>{
+    
+})
+
 module.exports = router;

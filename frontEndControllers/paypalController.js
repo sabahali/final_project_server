@@ -7,6 +7,7 @@ const base = "https://api-m.sandbox.paypal.com";
 const generateAccessToken = async () => {
     try {
         const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
+        console.log(auth)
         const response = await fetch(`${base}/v1/oauth2/token`, {
           method: "post",
           body: "grant_type=client_credentials",
@@ -16,6 +17,7 @@ const generateAccessToken = async () => {
         });
       
         const data = await response.json();
+        console.log(data?.accessToken)
         return data.access_token;
     } catch(error) {
         console.error("Failed to generate Access Token:", error);

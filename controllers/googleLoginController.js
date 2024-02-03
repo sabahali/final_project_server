@@ -1,8 +1,7 @@
 const axios = require('axios')
 const { userModel } = require('../mongodbControllers/models')
 const jwt = require('jsonwebtoken')
-const express = require('express')
-const router = express.Router()
+
 
 const googleLogin = async (req, res,next) => {
 

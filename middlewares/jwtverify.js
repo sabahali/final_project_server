@@ -1,6 +1,12 @@
 const express = require("express")
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
+const cookieParser = require('cookie-parser')
+
+
+
+
+
 
 const jwtVerify = async (req, res, next) => {
     const authHeader = req.headers.authorization
